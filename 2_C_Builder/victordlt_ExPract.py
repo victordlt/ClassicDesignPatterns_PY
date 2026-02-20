@@ -1,5 +1,4 @@
 # Buileder Pattern applied in Fast food chain restaurant
-
 from abc import ABC, abstractmethod
 
 class IBurgerBuilder(ABC):
@@ -7,60 +6,105 @@ class IBurgerBuilder(ABC):
     def add_bread(self, bread): pass
 
     @abstractmethod
-    def add_(self, body): pass
+    def add_meat(self, body): pass
 
     @abstractmethod
-    def build_legs(self, legs): pass
+    def add_cheese(self, legs): pass
 
     @abstractmethod
-    def get_robot(self): pass
+    def add_dressing(self, legs): pass
 
+    @abstractmethod
+    def add_lettuce(self): pass
+    
+    @abstractmethod
+    def add_tomato(self): pass
 
-class RobotBuilder(IRobotBuilder):    
+    @abstractmethod
+    def get_burger(self): pass    
+
+class ClassicBurgerBuilder(IBurgerBuilder):    
     def __init__(self):
-         self.robot = Robot()
+         self.burger = Burger()
 
-    def build_head(self, head):
-        self.robot.head = head
+    def add_bread(self):
+        self.burger.bread = "Brioche"       
 
-    def build_body(self, body):
-        self.robot.body = body
+    def add_meat(self):
+        self.burger.meat = "Beef"
 
-    def build_arms(self, arms):
-        self.robot.arms = arms
+    def add_cheese(self):
+        self.burger.cheese = "cheddar"
 
-    def build_legs(self, legs):
-        self.robot.legs = legs
+    def add_dressing(self):
+        self.burger.dressing = True
+    
+    def add_lettuce(self):
+        self.burger.lettuce = True
+    
+    def add_tomato(self):
+        self.burger.tomato = True
 
-    def get_robot(self):
-        return self.robot
+    def get_burger(self):
+        return self.burger
 
-class RobotDirector:
-    def __init__(self, robot_builder):
-         self.robot_builder = robot_builder
+class VeggieBurgerBuilder(IBurgerBuilder): 
+    def __init__(self):
+         self.burger = Burger()
 
-    def construct_robot(self):
-        self.robot_builder.build_head("Round")
-        self.robot_builder.build_body("Metal")
-        self.robot_builder.build_arms("Claws")
-        self.robot_builder.build_legs("Wheels")
+    def add_bread(self):
+        self.burger.bread = "Whole Wheat"       
+
+    def add_meat(self):
+        self.burger.meat = "Veggie Patty"
+
+    def add_cheese(self):
+        self.burger.cheese = "Swiss"
+
+    def add_dressing(self):
+        self.burger.dressing = False 
+    
+    def add_lettuce(self):
+        self.burger.lettuce = True
+    
+    def add_tomato(self):
+        self.burger.tomato = True
+
+    def get_burger(self):
+        return self.burger
+
+class BurgerDirector:
+    def __init__(self, burger_builder):
+         self.burger_builder = burger_builder
+
+    def construct_burger(self):
+        self.burger_builder.add_bread()
+        self.burger_builder.add_meat()
+        self.burger_builder.add_cheese()
+        self.burger_builder.add_dressing()
+        self.burger_builder.add_lettuce()
+        self.burger_builder.add_tomato()
+        
 
 
-class Robot:
-    def display_robot_info(self):
-        print("Robot Info:")
-        print(f"Head: {self.head}")
-        print(f"Body: {self.body}")
-        print(f"Arms: {self.arms}")
-        print(f"Legs: {self.legs}")
+class Burger:
+    def display_burger_info(self):
+        print("Burger Info:")
+        print(f"Bread: {self.bread}")
+        print(f"Meat: {self.meat}")
+        print(f"Cheese: {self.cheese}")
+        print(f"Dressing: {self.dressing}")
+        print(f"Lettuce: {self.lettuce}")
+        print(f"Tomato: {self.tomato}")
 
 #************************************************************************************
 # Client code ***********************************************************************
 #************************************************************************************
-robot_builder = RobotBuilder()
-robot_director = RobotDirector(robot_builder)
+#burger_builder = ClassicBurgerBuilder()
+burger_builder = VeggieBurgerBuilder()
+burger_director = BurgerDirector(burger_builder)
 
-robot_director.construct_robot()
-robot = robot_builder.get_robot()
+burger_director.construct_burger()
+burger = burger_builder.get_burger()
 
-robot.display_robot_info()  
+burger.display_burger_info() 
