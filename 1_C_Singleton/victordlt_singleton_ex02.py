@@ -1,3 +1,4 @@
+#Singleton Ex02
 from datetime import datetime
 
 class EventLogger:
