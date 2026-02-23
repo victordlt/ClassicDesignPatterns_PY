@@ -82,7 +82,7 @@ class WinDropDown(IDropDown):
 
 class WinTextBox(ITextBox):
     def render(self):
-        print("Rendering Windows textbox")
+        print("Rendering Windows textbox.")
 
 class WinFactory(IThemeFactory):        
     def create_button(self):
