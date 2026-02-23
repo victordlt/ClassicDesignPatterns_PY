@@ -1,3 +1,4 @@
+#Singleton Ex01
 import uuid
 
 class MySingleton:
