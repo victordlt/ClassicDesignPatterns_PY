@@ -1,3 +1,4 @@
+#Singleton ThreadSafe
 import threading    
 
 class ThreadSafeSingleton:
