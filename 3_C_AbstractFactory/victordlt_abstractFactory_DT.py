@@ -1,6 +1,6 @@
 class LinuxButton:
     def render(self):
-        print("Rendering Linux button")
+        print("Rendering Linux button.")
 
 class LinuxDropDown:
     def render(self):
