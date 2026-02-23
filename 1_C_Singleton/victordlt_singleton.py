@@ -1,3 +1,4 @@
+#Singleton
 class MySingleton:
     _instance = None
 
